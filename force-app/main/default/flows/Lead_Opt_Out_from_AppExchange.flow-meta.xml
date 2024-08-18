@@ -87,7 +87,7 @@
             <field>Description</field>
             <operator>Contains</operator>
             <value>
-                <stringValue>&quot;allow_contact_other_products&quot;:false</stringValue>
+                <stringValue>&quot;lead_description&quot;</stringValue>
             </value>
         </filters>
         <object>Lead</object>
@@ -100,5 +100,4 @@
         </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Draft</status>
 </Flow>
