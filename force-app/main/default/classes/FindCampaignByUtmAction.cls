@@ -35,12 +35,12 @@ public with sharing class FindCampaignByUtmAction {
     @InvocableMethod(label='Find Campaign by UTM (not batch safe)')
     public static List<ActionOutput> findCampaignByUtms(List<ActionInput> inputs) {
         if(inputs.size() > 1) {
-            throw new InvalidParameterValueException('all','Only one input record is allowed');
+            throw new FindCampaignByUtmActionException('Only one input record is allowed');
         }
         ActionInput input = inputs[0];
         List<String> utmMatchOrder = input.utmMatchOrder.split(',');
         if(utmMatchOrder.size() != 5) {
-            throw new InvalidParameterValueException('utmMatchOrder','All 5 UTM parameters are required to be ranked for matching');
+            throw new FindCampaignByUtmActionException('All 5 UTM parameters are required to be ranked for matching');
         }
         Map<String, String> matchMap = input.getMatchMap();
 
