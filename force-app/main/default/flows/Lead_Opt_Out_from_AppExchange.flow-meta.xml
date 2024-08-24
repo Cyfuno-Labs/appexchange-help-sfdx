@@ -100,4 +100,5 @@
         </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
+    <status>Draft</status>
 </Flow>
