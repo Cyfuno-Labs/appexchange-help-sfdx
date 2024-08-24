@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
+        <description>Converts a Lead to an existing Contact and its Account.</description>
         <name>Convert_Lead</name>
         <label>Convert Lead</label>
         <locationX>242</locationX>
@@ -58,6 +59,7 @@
             <label>Yes</label>
         </rules>
     </decisions>
+    <description>Looks to convert a (likely) duplicate Lead to an existing Contact with a matching Email.</description>
     <environments>Default</environments>
     <interviewLabel>Lead - Convert if possible {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Lead - Convert if possible</label>
@@ -81,6 +83,7 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordLookups>
+        <description>Tries to find a Contact with matching Email</description>
         <name>Search_for_Contact</name>
         <label>Search for Contact</label>
         <locationX>374</locationX>
