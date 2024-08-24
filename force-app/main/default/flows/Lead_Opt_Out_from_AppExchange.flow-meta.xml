@@ -1,49 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <actionCalls>
-        <name>AppX_Description</name>
-        <label>Parse Description</label>
-        <locationX>374</locationX>
-        <locationY>276</locationY>
-        <actionName>LeadSourceDescriptionParsingAction</actionName>
-        <actionType>apex</actionType>
-        <connector>
-            <targetReference>Communication_Preference_Set</targetReference>
-        </connector>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>description</name>
-            <value>
-                <elementReference>$Record.Description</elementReference>
-            </value>
-        </inputParameters>
-        <nameSegment>LeadSourceDescriptionParsingAction</nameSegment>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-        <versionSegment>1</versionSegment>
-    </actionCalls>
     <apiVersion>61.0</apiVersion>
-    <decisions>
-        <name>Communication_Preference_Set</name>
-        <label>Communication Preference Set?</label>
-        <locationX>374</locationX>
-        <locationY>384</locationY>
-        <defaultConnectorLabel>No</defaultConnectorLabel>
-        <rules>
-            <name>Communication_Preference_Set_Yes</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>AppX_Description.contactPreferenceSpecified</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Set_Opt_Out</targetReference>
-            </connector>
-            <label>Yes</label>
-        </rules>
-    </decisions>
+    <description>Sets the Email Opt Out flag on a Lead if they have NOT checked the Allow Contact for Other Products checkbox from the AppExchange</description>
     <environments>Default</environments>
     <interviewLabel>Lead - Opt Out from AppExchange {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Lead - Opt Out from AppExchange</label>
@@ -69,12 +27,12 @@
     <recordUpdates>
         <name>Set_Opt_Out</name>
         <label>Set Opt Out</label>
-        <locationX>242</locationX>
-        <locationY>492</locationY>
+        <locationX>308</locationX>
+        <locationY>276</locationY>
         <inputAssignments>
             <field>HasOptedOutOfEmail</field>
             <value>
-                <elementReference>AppX_Description.preventContactOtherProducts</elementReference>
+                <booleanValue>true</booleanValue>
             </value>
         </inputAssignments>
         <inputReference>$Record</inputReference>
@@ -87,18 +45,18 @@
             <field>Description</field>
             <operator>Contains</operator>
             <value>
-                <stringValue>&quot;lead_description&quot;</stringValue>
+                <stringValue>&quot;allow_contact_other_products&quot;:false</stringValue>
             </value>
         </filters>
         <object>Lead</object>
         <recordTriggerType>Create</recordTriggerType>
         <scheduledPaths>
             <connector>
-                <targetReference>AppX_Description</targetReference>
+                <targetReference>Set_Opt_Out</targetReference>
             </connector>
             <pathType>AsyncAfterCommit</pathType>
         </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
 </Flow>
