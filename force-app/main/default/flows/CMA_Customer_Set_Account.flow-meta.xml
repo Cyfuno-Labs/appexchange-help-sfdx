@@ -26,6 +26,7 @@
             <label>Yes</label>
         </rules>
     </decisions>
+    <description>Finds/Creates Account records based on CMA Customer&apos;s Name.</description>
     <environments>Default</environments>
     <interviewLabel>CMA Customer - Set Account {!$Flow.CurrentDateTime}</interviewLabel>
     <label>CMA Customer - Set Account</label>
@@ -49,6 +50,7 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordCreates>
+        <description>Creates an Account with the Name of the Customer.</description>
         <name>Create_Account</name>
         <label>Create Account</label>
         <locationX>440</locationX>
@@ -63,9 +65,16 @@
                 <elementReference>$Record.sfcma__Customer__c</elementReference>
             </value>
         </inputAssignments>
+        <inputAssignments>
+            <field>Type</field>
+            <value>
+                <stringValue>Customer</stringValue>
+            </value>
+        </inputAssignments>
         <object>Account</object>
     </recordCreates>
     <recordLookups>
+        <description>Searches for an Account matching the text-based Customer Name.</description>
         <name>Find_Account</name>
         <label>Find Account</label>
         <locationX>352</locationX>
