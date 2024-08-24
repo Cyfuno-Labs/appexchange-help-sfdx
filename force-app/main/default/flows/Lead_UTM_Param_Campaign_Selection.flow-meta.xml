@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
+        <description>Parses the JSON object placed in the Lead&apos;s Description field into usable values from a Flow&apos;s perspective.</description>
         <name>AppX_Description</name>
         <label>Parse Description</label>
         <locationX>374</locationX>
@@ -22,6 +23,7 @@
         <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
+        <description>Searches for a Campaign based on UTM parameters trying to find the closest match.</description>
         <name>Find_Campaign</name>
         <label>Find Campaign</label>
         <locationX>374</locationX>
@@ -95,6 +97,7 @@
             <label>Yes</label>
         </rules>
     </decisions>
+    <description>Parses the AppExchange JSON looking for UTM Parameters, then tries to find the right Campaign record using UTM params and finally associates the Lead with the right Campaign.</description>
     <environments>Default</environments>
     <interviewLabel>Lead - UTM Param Campaign Selection {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Lead - UTM Param Campaign Selection</label>
@@ -118,6 +121,7 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordCreates>
+        <description>Creates the CampaignMember record, tying this interaction into the Campaigns a Lead &quot;participated&quot; in.</description>
         <name>Add_Lead_to_Campaign</name>
         <label>Add Lead to Campaign</label>
         <locationX>242</locationX>
