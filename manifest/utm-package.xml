@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>FindCampaignByUtmAction</members>
+        <members>FindCampaignByUtmActionException</members>
+        <members>FindCampaignByUtmActionTest</members>
+        <members>LeadSourceDescription</members>
+        <members>LeadSourceDescriptionParsingAction</members>
+        <members>LeadSourceDescriptionParsingActionTest</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>Campaign.UTM_Campaign__c</members>
+        <members>Campaign.UTM_Content__c</members>
+        <members>Campaign.UTM_Medium__c</members>
+        <members>Campaign.UTM_Source__c</members>
+        <members>Campaign.UTM_Term__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>Lead_UTM_Param_Campaign_Selection</members>
+        <name>Flow</name>
+    </types>
+    <version>61.0</version>
+</Package>
